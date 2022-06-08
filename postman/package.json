@@ -1,0 +1,21 @@
+{
+  "name": "tempo-cc-backend-postman-runner",
+  "version": "1.0.0",
+  "description": "a simple way to start the project and run a postman collection and collect results",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "newman": "node newmanonly.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "newman": "^5.3.2",
+    "newman-reporter-htmlextra": "^1.22.9"
+  },
+  "devDependencies": {
+    "open": "^8.4.0",
+    "ps-node": "^0.1.6"
+  }
+}

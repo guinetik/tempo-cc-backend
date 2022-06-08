@@ -1,0 +1,57 @@
+[
+  {
+    "role_name": "Engineer",
+    "teamId": "c02f6b75-641a-40eb-8294-d89550cb2395",
+    "userId": "ed6b0199-b442-4734-8aa4-c63f5e6046e7"
+  },
+  {
+    "role_name": "Artist",
+    "teamId": "c02f6b75-641a-40eb-8294-d89550cb2395",
+    "userId": "826ddd76-4a45-4821-9c81-8d8efbb17a4b"
+  },
+  {
+    "role_name": "Architect",
+    "teamId": "c02f6b75-641a-40eb-8294-d89550cb2395",
+    "userId": "3cc9c883-d27f-4932-8bb8-f411298b7e9c"
+  },
+  {
+    "role_name": "Quality Assurance",
+    "teamId": "c02f6b75-641a-40eb-8294-d89550cb2395",
+    "userId": "553112a5-33fc-431d-8d96-c72e5b5c1a2b"
+  },
+  {
+    "role_name": "Manager",
+    "teamId": "7676a4bf-adfe-415c-941b-1739af07039b",
+    "userId": "371d2ee8-cdf4-48cf-9ddb-04798b79ad9e"
+  },
+  {
+    "role_name": "PO",
+    "teamId": "7676a4bf-adfe-415c-941b-1739af07039b",
+    "userId": "54383a18-425c-4f50-9424-1c4c27e776dd"
+  },
+  {
+    "role_name": "Scrum Master",
+    "teamId": "7676a4bf-adfe-415c-941b-1739af07039b",
+    "userId": "e0dba3dc-313d-4648-bd9c-4ddc8b189e84"
+  },
+  {
+    "role_name": "Devops Sensei",
+    "teamId": "7676a4bf-adfe-415c-941b-1739af07039b",
+    "userId": "b047d3f4-3469-47ce-a03f-1637a6de036b"
+  },
+  {
+    "role_name": "Tech Recruiter",
+    "teamId": "7676a4bf-adfe-415c-941b-1739af07039b",
+    "userId": "ee91a519-fefa-48a7-bdf7-672bde38aef9"
+  },
+  {
+    "role_name": "Editor",
+    "teamId": "7676a4bf-adfe-415c-941b-1739af07039b",
+    "userId": "197c2b23-1218-44d0-b6b8-d757ba004515"
+  },
+  {
+    "role_name": "Sysadmin",
+    "teamId": "7676a4bf-adfe-415c-941b-1739af07039b",
+    "userId": "e947058e-2d5f-47d9-925b-27bcab14c38e"
+  }
+]
