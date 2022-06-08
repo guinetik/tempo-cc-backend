@@ -1,0 +1,200 @@
+openapi: 3.0.2
+info:
+  title: Tempo CC - João Guilherme
+  description: ""
+  contact:
+    email: guinetik@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1-SNAPSHOT
+externalDocs:
+  description: Original API
+  url: https://cgjresszgg.execute-api.eu-west-1.amazonaws.com/users
+servers:
+  - url: http://localhost:8080/tempo-cc-backend
+tags:
+  - name: roles
+    description: Roles service that enhances the Users and Teams services, by giving us the concept of team roles and the ability to associate them with team members.
+paths:
+  /roles:
+    post:
+      tags:
+        - roles
+      summary: Create new role
+      description: Role name should be unique.
+      operationId: createRole
+      requestBody:
+        description: JSON object with the name of the role
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/RoleInput'
+      responses:
+        201:
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+    patch:
+      tags:
+        - roles
+      summary: Assigns a team member to a role
+      operationId: assignRole
+      requestBody:
+        description: JSON object with team id, role id and user id
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/RoleRelationship'
+        required: true
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleRelationship'
+    get:
+      tags:
+        - roles
+      summary: Look up a role for a membership. A membership is defined by a user id and a team id.
+      operationId: getRoleByMembership
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleRelationship'
+        401:
+          description: User is not a member of this team
+        404:
+          description: Membership not found
+      parameters:
+        - name: userId
+          in: query
+          description: 'User id to search for'
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          in: query
+          description: 'Team id to search for'
+          required: true
+          schema:
+            type: string
+  /roles/{roleId}:
+    get:
+      tags:
+        - roles
+      summary: Look up memberships for a role
+      operationId: getMembershipsByRole
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleRelationship'
+        404:
+          description: Role not found
+      parameters:
+        - name: roleId
+          in: path
+          description: The id of the role to look up
+          required: true
+          schema:
+            type: integer
+            format: int64
+components:
+  schemas:
+    User:
+      description: Default user model
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        avatarUrl:
+          type: string
+        location:
+          type: string
+    Team:
+      description: Default team model
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        teamLeadId:
+          type: string
+    TeamDetails:
+      description: Team model with an array of members
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        teamLeadId:
+          type: string
+        teamMemberIds:
+          type: array
+          items:
+            type: string
+    RoleInput:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: "Engineer"
+          description: "Name of the role"
+    Role:
+      description: Default model for role
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          example: "Engineer"
+          description: "Name of the role"
+    RoleRelationship:
+      description: Model for describing a user's role within a team
+      type: object
+      required:
+        - teamId
+        - userId
+      properties:
+        roleId:
+          type: integer
+          format: int64
+          example: 1
+          description: "Id of the Role"
+        name:
+          type: string
+          example: "Developer"
+          description: "Role name"
+        teamId:
+          type: string
+          example: "7676a4bf-adfe-415c-941b-1739af07039b"
+          description: "Id of the Team"
+        userId:
+          type: string
+          example: "fd282131-d8aa-4819-b0c8-d9e0bfb1b75c"
+          description: "Id of the User"
